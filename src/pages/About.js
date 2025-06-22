@@ -151,7 +151,7 @@ const About = () => {
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
                   <img
-                    src="/portfolio_photo2.jpeg"
+                    src="/photos/profile/portfolio_photo2.jpeg"
                     alt="Kartik Bhardwaj - Full Stack Developer"
                     className="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-500"
                   />

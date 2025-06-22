@@ -7,38 +7,54 @@ import NavigationControls from './NavigationControls';
 const CertificateBook = ({ isOpen, onClose }) => {
   const [currentPage, setCurrentPage] = useState(0);
 
-  // Sample certificate data - user can replace later
+  // Real certificate data from the photos/certificates folder
   const certificates = [
     {
       id: 1,
-      title: "React.js Professional Certificate",
-      issuer: "Meta",
-      date: "2023",
-      image: "/api/placeholder/400/300",
+      title: "Google Workspace Certificate",
+      issuer: "Google",
+      date: "December 2023",
+      image: "/photos/certificates/Google Workspace.jpeg",
       verified: true
     },
     {
       id: 2,
-      title: "Full Stack Web Development",
-      issuer: "freeCodeCamp",
-      date: "2023",
-      image: "/api/placeholder/400/300",
+      title: "Git Command Lines Certificate",
+      issuer: "Udemy",
+      date: "June 2024",
+      image: "/photos/certificates/Git_Commandlines.jpeg",
       verified: true
     },
     {
       id: 3,
-      title: "JavaScript Algorithms and Data Structures",
-      issuer: "freeCodeCamp",
-      date: "2022",
-      image: "/api/placeholder/400/300",
+      title: "Java Programming Certificate",
+      issuer: "Udemy",
+      date: "May 2024",
+      image: "/photos/certificates/java.jpeg",
       verified: true
     },
     {
       id: 4,
-      title: "Node.js Backend Development",
-      issuer: "IBM",
-      date: "2022",
-      image: "/api/placeholder/400/300",
+      title: "Python Programming Certificate",
+      issuer: "Udemy",
+      date: "February 2024",
+      image: "/photos/certificates/Python.jpeg",
+      verified: true
+    },
+    {
+      id: 5,
+      title: "HTML & CSS Professional Certificate",
+      issuer: "Udemy",
+      date: "March 2024",
+      image: "/photos/certificates/Html_css.jpeg",
+      verified: true
+    },
+    {
+      id: 6,
+      title: "JavaScript Programming Certificate",
+      issuer: "Udemy",
+      date: "April 2024",
+      image: "/photos/certificates/javascript.jpeg",
       verified: true
     }
   ];
@@ -116,7 +132,7 @@ const CertificateBook = ({ isOpen, onClose }) => {
           animate={{ scale: 1, opacity: 1, rotateY: 0 }}
           exit={{ scale: 0.8, opacity: 0, rotateY: 15 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="relative w-full max-w-4xl mx-4 h-[80vh] max-h-[600px]"
+          className="relative w-full max-w-4xl mx-4 h-[85vh] max-h-[650px]"
           style={{ perspective: '1000px' }}
         >
           {/* Close Button */}

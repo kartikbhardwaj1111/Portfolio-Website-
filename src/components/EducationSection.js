@@ -19,44 +19,10 @@ const EducationSection = () => {
       status: 'In Progress',
       hasResultViewer: true,
       highlights: [
-        '🎓 Specialized in Software Product Engineering',
+        '� Specialized in Software Product Engineering',
         '💻 Kalvium Powered Industry-Relevant Curriculum',
-        '📊 Achieved 9.1 CGPA in First Semester',
+        '� Achieved 9.1 CGPA in First Semester',
         '🚀 Focus on Full Stack Development & Modern Technologies'
-      ]
-    },
-    {
-      id: 2,
-      title: 'Class 12 — Senior Secondary',
-      institution: 'St Mary\'s Sr. Sec. School, Rudrapur',
-      branch: 'CBSE, PCM + Computer Science',
-      program: 'Science Stream',
-      period: '2024 – 2025',
-      result: '80% in Board Exams',
-      status: 'Completed',
-      hasResultViewer: false,
-      highlights: [
-        '🎤 Cultural Secretary of the School',
-        '🎙️ Anchoring Host for multiple major school events',
-        '💻 Computer Science specialization with strong programming foundation',
-        '📚 Strong performance in Physics, Chemistry, Mathematics'
-      ]
-    },
-    {
-      id: 3,
-      title: 'Class 10 — Secondary School',
-      institution: 'St Mary\'s Sr. Sec. School, Rudrapur',
-      branch: 'CBSE',
-      program: 'Secondary Education',
-      period: '2022 – 2023',
-      result: '86% in Board Exams',
-      status: 'Completed',
-      hasResultViewer: false,
-      highlights: [
-        '🏆 1st Place in Anchoring Competition',
-        '✍️ Awarded Best Writer',
-        '📖 Consistent academic excellence',
-        '🎯 Strong foundation in core subjects'
       ]
     },
     {
@@ -73,7 +39,41 @@ const EducationSection = () => {
         '🚀 Strong foundation built in Physics, Chemistry, Mathematics',
         '💡 Ignited deep interest in Full Stack Development',
         '🎯 Qualified for premium engineering colleges',
-        '📊 Scored above 86% of all test takers nationwide'
+        '� Scored above 86% of all test takers nationwide'
+      ]
+    },
+    {
+      id: 2,
+      title: 'Class 12 — Senior Secondary',
+      institution: 'St Mary\'s Sr. Sec. School, Rudrapur',
+      branch: 'CBSE, PCM + Computer Science',
+      program: 'Science Stream',
+      period: '2024 – 2025',
+      result: '80% in Board Exams',
+      status: 'Completed',
+      hasResultViewer: false,
+      highlights: [
+        '🎤 Cultural Secretary of the School',
+        '🎙️ Anchoring Host for multiple major school events',
+        '💻 Computer Science specialization with strong programming foundation',
+        '� Strong performance in Physics, Chemistry, Mathematics'
+      ]
+    },
+    {
+      id: 3,
+      title: 'Class 10 — Secondary School',
+      institution: 'St Mary\'s Sr. Sec. School, Rudrapur',
+      branch: 'CBSE',
+      program: 'Secondary Education',
+      period: '2022 – 2023',
+      result: '86% in Board Exams',
+      status: 'Completed',
+      hasResultViewer: false,
+      highlights: [
+        '� 1st Place in Anchoring Competition',
+        '✍️ Awarded Best Writer',
+        '� Consistent academic excellence',
+        '🎯 Strong foundation in core subjects'
       ]
     }
   ];

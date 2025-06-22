@@ -227,7 +227,7 @@ const AboutMe = () => {
                 animate={floatingAnimation}
               >
                 <img
-                  src="/portfolio_photo.jpeg"
+                  src="/photos/profile/portfolio_photo.jpeg"
                   alt="Kartik Bhardwaj - Full Stack Developer"
                   className="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-500"
                   style={{

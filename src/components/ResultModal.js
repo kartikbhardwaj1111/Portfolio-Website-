@@ -165,33 +165,7 @@ const ResultModal = ({ isOpen, onClose, title, resultData }) => {
                       </div>
                     </motion.div>
 
-                    {/* Subject Performance */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                      <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-600">
-                        <div className="flex items-center justify-between">
-                          <span className="text-gray-300">Programming Fundamentals</span>
-                          <span className="text-neon-green font-bold">A+</span>
-                        </div>
-                      </div>
-                      <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-600">
-                        <div className="flex items-center justify-between">
-                          <span className="text-gray-300">Mathematics</span>
-                          <span className="text-neon-green font-bold">A+</span>
-                        </div>
-                      </div>
-                      <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-600">
-                        <div className="flex items-center justify-between">
-                          <span className="text-gray-300">Engineering Physics</span>
-                          <span className="text-neon-green font-bold">A</span>
-                        </div>
-                      </div>
-                      <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-600">
-                        <div className="flex items-center justify-between">
-                          <span className="text-gray-300">Communication Skills</span>
-                          <span className="text-neon-green font-bold">A+</span>
-                        </div>
-                      </div>
-                    </div>
+
 
                     {/* Upload Section */}
                     <div className="border-t border-gray-700 pt-6">
@@ -377,7 +351,7 @@ const ResultModal = ({ isOpen, onClose, title, resultData }) => {
             {/* Image Display */}
             <div className="p-6 flex justify-center items-center bg-gradient-to-br from-gray-900 to-gray-800">
               <motion.img
-                src="/sem1_result.jpeg"
+                src="/photos/certificates/sem1_result.jpeg"
                 alt="First Semester Result - CGPA 9.1"
                 className="max-w-full max-h-[70vh] object-contain rounded-lg shadow-2xl border border-neon-cyan/30"
                 initial={{ scale: 0.9, opacity: 0 }}
@@ -408,11 +382,11 @@ const ResultModal = ({ isOpen, onClose, title, resultData }) => {
                 </motion.div>
                 <h4 className="text-xl text-white mb-2">Result Image Not Found</h4>
                 <p className="text-gray-400 mb-4">
-                  Please make sure "sem1_result.jpeg" is placed in the public folder
+                  Please make sure "sem1_result.jpeg" is placed in the public/photos/certificates folder
                 </p>
                 <div className="bg-gray-800 p-4 rounded-lg">
                   <p className="text-sm text-gray-300">Expected path:</p>
-                  <code className="text-neon-green text-sm">/public/sem1_result.jpeg</code>
+                  <code className="text-neon-green text-sm">/public/photos/certificates/sem1_result.jpeg</code>
                 </div>
               </div>
             </div>

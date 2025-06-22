@@ -11,7 +11,7 @@ const NavigationControls = ({
   canGoNext 
 }) => {
   return (
-    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center space-x-6">
+    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center space-x-6">
       {/* Previous Button */}
       <motion.button
         whileHover={{ scale: canGoPrev ? 1.1 : 1, x: canGoPrev ? -2 : 0 }}

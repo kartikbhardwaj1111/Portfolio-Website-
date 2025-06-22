@@ -1,7 +1,38 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { createPortal } from 'react-dom';
 
 const CertificatePage = ({ page, pageNumber, totalPages }) => {
+  const [showCertificate, setShowCertificate] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  
+  // Handle ESC key for certificate viewer
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === 'Escape' && showCertificate) {
+        setShowCertificate(false);
+      }
+    };
+
+    if (showCertificate) {
+      document.addEventListener('keydown', handleKeyPress);
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+      document.body.style.overflow = 'unset';
+    };
+  }, [showCertificate]);
+
+  // Reset image loaded state when certificate changes
+  useEffect(() => {
+    if (showCertificate) {
+      setImageLoaded(false);
+    }
+  }, [showCertificate]);
+  
   if (!page) return null;
 
   // Special handling for the final page
@@ -105,12 +136,12 @@ const CertificatePage = ({ page, pageNumber, totalPages }) => {
             />
           </div>
 
-          {/* Certificate Image */}
+          {/* Certificate Image Section */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5 }}
-            className="flex-1 flex items-center justify-center mb-6"
+            className="flex-1 flex flex-col items-center justify-center mb-6 space-y-4"
           >
             <div className="w-full max-w-sm h-48 bg-gray-100 rounded-lg border-2 border-gray-200 flex items-center justify-center">
               <div className="text-center text-gray-500">
@@ -119,6 +150,22 @@ const CertificatePage = ({ page, pageNumber, totalPages }) => {
                 <p className="text-xs">(To be uploaded)</p>
               </div>
             </div>
+            
+            {/* View Certificate Button */}
+            {page.image && (
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setShowCertificate(true)}
+                className="px-6 py-2 bg-gradient-to-r from-neon-green to-neon-cyan text-white font-semibold rounded-lg shadow-lg hover:shadow-neon-green/30 transition-all duration-300 flex items-center space-x-2"
+              >
+                <span>👁️</span>
+                <span>View Certificate</span>
+              </motion.button>
+            )}
           </motion.div>
 
           {/* Certificate Details */}
@@ -136,11 +183,6 @@ const CertificatePage = ({ page, pageNumber, totalPages }) => {
               <div className="flex items-center space-x-1">
                 <span className="text-blue-500">🏢</span>
                 <span>{page.issuer}</span>
-              </div>
-              
-              <div className="flex items-center space-x-1">
-                <span className="text-green-500">📅</span>
-                <span>{page.date}</span>
               </div>
               
               {page.verified && (
@@ -172,6 +214,121 @@ const CertificatePage = ({ page, pageNumber, totalPages }) => {
       <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-amber-700 text-sm font-medium">
         Page {pageNumber} of {totalPages}
       </div>
+
+      {/* Certificate Viewer Modal - Rendered as Portal */}
+      {showCertificate && page.image && createPortal(
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={(e) => e.target === e.currentTarget && setShowCertificate(false)}
+            style={{ zIndex: 10000 }}
+          >
+            {/* Close Button */}
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8, rotate: -90 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              exit={{ opacity: 0, scale: 0.8, rotate: 90 }}
+              whileHover={{ 
+                scale: 1.1, 
+                rotate: 90, 
+                backgroundColor: "#ef4444",
+                boxShadow: "0 0 20px rgba(239,68,68,0.5)"
+              }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setShowCertificate(false)}
+              className="absolute top-6 right-6 z-10 w-12 h-12 bg-red-500/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-2xl transition-all duration-300 hover:bg-red-500"
+            >
+              ×
+            </motion.button>
+
+            {/* Certificate Image */}
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0, rotateY: -15 }}
+              animate={{ 
+                scale: imageLoaded ? 1 : 0.9, 
+                opacity: imageLoaded ? 1 : 0.7, 
+                rotateY: 0 
+              }}
+              exit={{ scale: 0.5, opacity: 0, rotateY: 15 }}
+              transition={{ 
+                duration: 0.5, 
+                ease: "easeOut",
+                scale: { duration: imageLoaded ? 0.3 : 0.5 }
+              }}
+              className="relative max-w-[90vw] max-h-[90vh] rounded-xl overflow-hidden shadow-2xl"
+            >
+              {/* Loading Spinner */}
+              {!imageLoaded && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="absolute inset-0 bg-gray-900/50 backdrop-blur-sm flex items-center justify-center z-10"
+                >
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    className="w-12 h-12 border-4 border-neon-cyan border-t-transparent rounded-full"
+                  />
+                </motion.div>
+              )}
+
+              <img
+                src={page.image}
+                alt={page.title}
+                className="w-full h-full object-contain rounded-xl"
+                onLoad={() => setImageLoaded(true)}
+                onError={() => setImageLoaded(true)}
+              />
+
+              {/* Image Info Overlay - Conditional Position */}
+              <motion.div
+                initial={{ opacity: 0, x: 20, y: 20 }}
+                animate={{ opacity: imageLoaded ? 1 : 0, x: imageLoaded ? 0 : 20, y: imageLoaded ? 0 : 20 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                className={`absolute ${
+                  page.title === "Google Workspace Certificate" 
+                    ? "top-4 right-4" 
+                    : "bottom-4 right-4"
+                } bg-black/85 backdrop-blur-sm rounded-lg p-3 max-w-xs shadow-lg`}
+              >
+                <h3 className="text-white text-base font-bold mb-1.5 leading-tight">{page.title}</h3>
+                <div className="space-y-1">
+                  <p className="text-gray-300 text-xs flex items-center">
+                    <span className="text-blue-400 mr-1.5">🏢</span>
+                    {page.issuer}
+                  </p>
+                  {page.verified && (
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+                      className="flex items-center mt-1.5 pt-1.5 border-t border-gray-600"
+                    >
+                      <span className="text-green-400 mr-1.5">✅</span>
+                      <span className="text-green-400 text-xs font-medium">Verified</span>
+                    </motion.div>
+                  )}
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Keyboard Hint */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 0.7, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ delay: 1 }}
+              className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-gray-400 text-sm text-center"
+            >
+              <p>Press <kbd className="px-2 py-1 bg-gray-700 rounded text-xs">ESC</kbd> or click outside to close</p>
+            </motion.div>
+          </motion.div>
+        </AnimatePresence>,
+        document.body
+      )}
     </motion.div>
   );
 };
