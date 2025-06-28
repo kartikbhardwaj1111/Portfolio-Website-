@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaDribbble, FaArrowDown, FaMouse } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaArrowDown, FaMouse } from 'react-icons/fa';
 import { ReactTyped } from 'react-typed';
 
 const Hero = () => {
@@ -59,8 +59,7 @@ const Hero = () => {
 
   const socialLinks = [
     { icon: FaGithub, href: 'https://github.com', label: 'GitHub' },
-    { icon: FaLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: FaDribbble, href: 'https://dribbble.com', label: 'Dribbble' }
+    { icon: FaLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' }
   ];
 
   return (
@@ -128,7 +127,7 @@ const Hero = () => {
         </div>
 
         {/* Subtitle with Typing Effect */}
-        <motion.div variants={itemVariants} className="mb-12">
+        <motion.div variants={itemVariants} className="mb-16">
           <div className="text-xl md:text-2xl lg:text-3xl text-white font-light tracking-widest">
             <ReactTyped
               strings={[
@@ -147,7 +146,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Animated Buttons */}
-        <motion.div variants={itemVariants} className="mb-16">
+        <motion.div variants={itemVariants} className="mb-20">
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <motion.div variants={buttonVariants} whileHover="hover">
               <Link

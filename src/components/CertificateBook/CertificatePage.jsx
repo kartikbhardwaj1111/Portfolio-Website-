@@ -5,6 +5,13 @@ import { createPortal } from 'react-dom';
 const CertificatePage = ({ page, pageNumber, totalPages }) => {
   const [showCertificate, setShowCertificate] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageSrc, setImageSrc] = useState('');
+  const [isClient, setIsClient] = useState(false);
+  
+  // Ensure client-side rendering
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   
   // Handle ESC key for certificate viewer
   useEffect(() => {
@@ -32,6 +39,38 @@ const CertificatePage = ({ page, pageNumber, totalPages }) => {
       setImageLoaded(false);
     }
   }, [showCertificate]);
+
+  // Update image source when page changes and ensure client-side initialization
+  useEffect(() => {
+    if (page && isClient) {
+      setImageSrc(page.image || page.fallbackImage);
+      setImageLoaded(false);
+    }
+  }, [page, isClient]);
+
+  // Handle image error by falling back to fallback image
+  const handleImageError = () => {
+    if (page?.fallbackImage && imageSrc !== page.fallbackImage) {
+      setImageSrc(page.fallbackImage);
+    } else {
+      setImageLoaded(true);
+    }
+  };
+
+  // Enhanced image load handler with proper sizing
+  const handleImageLoad = (e) => {
+    setImageLoaded(true);
+    
+    // Ensure image dimensions are properly calculated
+    const img = e.target;
+    if (img.naturalWidth && img.naturalHeight) {
+      // Force a reflow to ensure proper rendering
+      img.style.display = 'none';
+      // eslint-disable-next-line no-unused-expressions
+      img.offsetHeight; // Trigger reflow
+      img.style.display = 'block';
+    }
+  };
   
   if (!page) return null;
 
@@ -152,7 +191,7 @@ const CertificatePage = ({ page, pageNumber, totalPages }) => {
             </div>
             
             {/* View Certificate Button */}
-            {page.image && (
+            {(page.image || page.fallbackImage) && (
               <motion.button
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -216,15 +255,14 @@ const CertificatePage = ({ page, pageNumber, totalPages }) => {
       </div>
 
       {/* Certificate Viewer Modal - Rendered as Portal */}
-      {showCertificate && page.image && createPortal(
+      {isClient && showCertificate && (page.image || page.fallbackImage) && createPortal(
         <AnimatePresence>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4"
+            className="certificate-modal-backdrop bg-black/95 backdrop-blur-sm flex items-center justify-center p-4"
             onClick={(e) => e.target === e.currentTarget && setShowCertificate(false)}
-            style={{ zIndex: 10000 }}
           >
             {/* Close Button */}
             <motion.button
@@ -258,7 +296,7 @@ const CertificatePage = ({ page, pageNumber, totalPages }) => {
                 ease: "easeOut",
                 scale: { duration: imageLoaded ? 0.3 : 0.5 }
               }}
-              className="relative max-w-[90vw] max-h-[90vh] rounded-xl overflow-hidden shadow-2xl"
+              className="certificate-image-container rounded-xl overflow-hidden shadow-2xl"
             >
               {/* Loading Spinner */}
               {!imageLoaded && (
@@ -276,11 +314,12 @@ const CertificatePage = ({ page, pageNumber, totalPages }) => {
               )}
 
               <img
-                src={page.image}
+                src={imageSrc}
                 alt={page.title}
-                className="w-full h-full object-contain rounded-xl"
-                onLoad={() => setImageLoaded(true)}
-                onError={() => setImageLoaded(true)}
+                className="certificate-image rounded-xl"
+                onLoad={handleImageLoad}
+                onError={handleImageError}
+                loading="eager"
               />
 
               {/* Image Info Overlay - Conditional Position */}

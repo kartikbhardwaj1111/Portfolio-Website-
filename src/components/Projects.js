@@ -77,13 +77,7 @@ const Projects = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gradient-to-b from-gray-900 to-black relative overflow-hidden py-20"
-    >
+    <section className="min-h-screen bg-gradient-to-b from-gray-900 to-black relative overflow-hidden py-20">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-neon-green/10 rounded-full blur-3xl animate-pulse" />
@@ -96,7 +90,7 @@ const Projects = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="container-custom relative z-10 px-4 pt-20"
+        className="container-custom relative z-10 px-4"
       >
         {/* Section Title */}
         <motion.div variants={itemVariants} className="text-center mb-16">
@@ -159,23 +153,11 @@ const Projects = () => {
               )}
 
               {/* Project Image */}
-              <div className="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
+              <div className="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-neon-green/20 to-neon-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                {project.title.includes('BookHive') ? (
-                  <img 
-                    src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=500&h=300&fit=crop&crop=entropy&auto=format&q=80" 
-                    alt="BookHive - Library Books"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                ) : (
-                  <img 
-                    src="https://images.unsplash.com/photo-1564865878688-9a244444042a?w=500&h=300&fit=crop&crop=entropy&auto=format&q=80" 
-                    alt="Laptop covered with colorful stickers"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                )}
-                {/* Overlay for better text visibility */}
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
+                <div className="text-6xl text-gray-600 group-hover:text-neon-cyan transition-colors duration-300">
+                  {project.title.includes('BookHive') ? '📚' : '💻'}
+                </div>
               </div>
 
               {/* Card Content */}
@@ -242,7 +224,7 @@ const Projects = () => {
           ))}
         </motion.div>
       </motion.div>
-    </motion.div>
+    </section>
   );
 };
 
