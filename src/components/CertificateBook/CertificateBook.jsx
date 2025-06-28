@@ -15,6 +15,7 @@ const CertificateBook = ({ isOpen, onClose }) => {
       issuer: "Google",
       date: "December 2023",
       image: "/photos/certificates/Google Workspace.jpeg",
+      fallbackImage: "https://images.unsplash.com/photo-1606868306217-dbf5046868d2?w=800&h=600&fit=crop&crop=entropy&auto=format&q=80",
       verified: true
     },
     {
@@ -23,6 +24,7 @@ const CertificateBook = ({ isOpen, onClose }) => {
       issuer: "Udemy",
       date: "June 2024",
       image: "/photos/certificates/Git_Commandlines.jpeg",
+      fallbackImage: "https://images.unsplash.com/photo-1618477247222-acbdb0e159b3?w=800&h=600&fit=crop&crop=entropy&auto=format&q=80",
       verified: true
     },
     {
@@ -31,6 +33,7 @@ const CertificateBook = ({ isOpen, onClose }) => {
       issuer: "Udemy",
       date: "May 2024",
       image: "/photos/certificates/java.jpeg",
+      fallbackImage: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=600&fit=crop&crop=entropy&auto=format&q=80",
       verified: true
     },
     {
@@ -39,6 +42,7 @@ const CertificateBook = ({ isOpen, onClose }) => {
       issuer: "Udemy",
       date: "February 2024",
       image: "/photos/certificates/Python.jpeg",
+      fallbackImage: "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&h=600&fit=crop&crop=entropy&auto=format&q=80",
       verified: true
     },
     {
@@ -47,6 +51,7 @@ const CertificateBook = ({ isOpen, onClose }) => {
       issuer: "Udemy",
       date: "March 2024",
       image: "/photos/certificates/Html_css.jpeg",
+      fallbackImage: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&h=600&fit=crop&crop=entropy&auto=format&q=80",
       verified: true
     },
     {
@@ -55,6 +60,7 @@ const CertificateBook = ({ isOpen, onClose }) => {
       issuer: "Udemy",
       date: "April 2024",
       image: "/photos/certificates/javascript.jpeg",
+      fallbackImage: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=800&h=600&fit=crop&crop=entropy&auto=format&q=80",
       verified: true
     }
   ];

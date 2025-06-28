@@ -129,20 +129,21 @@ const AboutMe = () => {
                 variants={leftVariants}
                 className="text-gray-300 text-base md:text-lg leading-relaxed tracking-wide"
               >
-                I'm a passionate full-stack developer with over 5 years of experience crafting 
-                digital experiences that blend creativity with functionality. My journey in tech 
-                has been driven by an insatiable curiosity to solve complex problems and create 
-                meaningful solutions that make a difference.
+                I'm a Full Stack Developer and a proud Kalvium student, building real-world apps that merge sleek UI with solid backend architecture. In just one year, I've shipped full-stack projects like a book review platform and a viral laptop sticker voting system — all built for performance, scalability, and real users.
               </motion.p>
               
               <motion.p 
                 variants={leftVariants}
                 className="text-gray-300 text-base md:text-lg leading-relaxed tracking-wide"
               >
-                When I'm not coding, you'll find me exploring the latest design trends, 
-                experimenting with new technologies, or contributing to open-source projects. 
-                I believe in the power of clean code, intuitive design, and the magic that 
-                happens when technology meets human creativity.
+                Fluent in the MERN stack, I craft secure auth flows, lightning-fast APIs, and animated interfaces using React, Tailwind, and Framer Motion. I've also contributed to open-source, hosted tech talks, and explored AI tools to automate workflows.
+              </motion.p>
+
+              <motion.p 
+                variants={leftVariants}
+                className="text-gray-300 text-base md:text-lg leading-relaxed tracking-wide font-semibold"
+              >
+                <span className="text-neon-cyan font-bold">I don't just write code — I craft impactful experiences with intent and precision.</span> <span className="text-neon-green font-bold">I'm here to build, scale, and lead.</span>
               </motion.p>
             </div>
 
