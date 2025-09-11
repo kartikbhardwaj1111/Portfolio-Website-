@@ -87,25 +87,30 @@ const ResultModal = ({ isOpen, onClose, title, resultData }) => {
 
             {/* Content */}
             <div className="space-y-6">
-              {/* Current Result */}
+              {/* Semester Results */}
               <motion.div
                 variants={imageVariants}
                 initial="hidden"
                 animate="visible"
                 className="bg-gray-800/50 rounded-xl p-6 border border-gray-700"
               >
-                <h4 className="text-lg font-semibold text-neon-cyan mb-4">
-                  📊 First Semester (2025)
+                <h4 className="text-lg font-semibold text-neon-cyan mb-6">
+                  📊 Semester Results (2025)
                 </h4>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                  <div className="bg-gray-900/50 p-4 rounded-lg">
-                    <p className="text-gray-400 text-sm">CGPA</p>
-                    <p className="text-2xl font-bold text-neon-green">9.1</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  {/* First Semester */}
+                  <div className="bg-gray-900/50 p-4 rounded-lg border border-neon-green/30">
+                    <h5 className="text-neon-green font-semibold mb-2">First Semester</h5>
+                    <p className="text-3xl font-bold text-neon-green mb-1">9.1</p>
+                    <p className="text-gray-400 text-sm">CGPA - Grade A+</p>
                   </div>
-                  <div className="bg-gray-900/50 p-4 rounded-lg">
-                    <p className="text-gray-400 text-sm">Grade</p>
-                    <p className="text-2xl font-bold text-white">A+</p>
+                  
+                  {/* Second Semester */}
+                  <div className="bg-gray-900/50 p-4 rounded-lg border border-neon-cyan/30">
+                    <h5 className="text-neon-cyan font-semibold mb-2">Second Semester</h5>
+                    <p className="text-3xl font-bold text-neon-cyan mb-1">Available</p>
+                    <p className="text-gray-400 text-sm">Result Published</p>
                   </div>
                 </div>
 
@@ -159,7 +164,7 @@ const ResultModal = ({ isOpen, onClose, title, resultData }) => {
                       className="bg-gradient-to-r from-neon-cyan/20 to-neon-green/20 rounded-2xl p-6 mb-6 border border-neon-cyan/40"
                     >
                       <div className="text-center">
-                        <p className="text-6xl font-bold text-neon-cyan mb-2">9.1</p>
+                        <p className="text-6xl font-bold text-neon-cyan mb-2">9.2</p>
                         <p className="text-xl text-white font-semibold">CGPA Achieved</p>
                         <p className="text-neon-green text-sm">Grade: A+ Excellence</p>
                       </div>
@@ -192,19 +197,34 @@ const ResultModal = ({ isOpen, onClose, title, resultData }) => {
                             Click below to view the original semester result document
                           </p>
                           
-                          {/* View Result Button */}
-                          <motion.button
-                            onClick={() => setIsImageViewOpen(true)}
-                            whileHover={{ 
-                              scale: 1.05,
-                              boxShadow: "0 0 25px rgba(0, 255, 255, 0.5)"
-                            }}
-                            whileTap={{ scale: 0.95 }}
-                            className="bg-gradient-to-r from-neon-cyan to-neon-green text-black px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all duration-300 flex items-center gap-2 mx-auto"
-                          >
-                            <FaEye size={18} />
-                            📄 View Result
-                          </motion.button>
+                          {/* View Result Buttons */}
+                          <div className="flex gap-4 justify-center">
+                            <motion.button
+                              onClick={() => setIsImageViewOpen('sem1')}
+                              whileHover={{ 
+                                scale: 1.05,
+                                boxShadow: "0 0 25px rgba(0, 255, 136, 0.5)"
+                              }}
+                              whileTap={{ scale: 0.95 }}
+                              className="bg-gradient-to-r from-neon-green to-neon-cyan text-black px-6 py-3 rounded-lg font-bold hover:shadow-lg transition-all duration-300 flex items-center gap-2"
+                            >
+                              <FaEye size={16} />
+                              📄 Sem 1 Result
+                            </motion.button>
+                            
+                            <motion.button
+                              onClick={() => setIsImageViewOpen('sem2')}
+                              whileHover={{ 
+                                scale: 1.05,
+                                boxShadow: "0 0 25px rgba(0, 255, 255, 0.5)"
+                              }}
+                              whileTap={{ scale: 0.95 }}
+                              className="bg-gradient-to-r from-neon-cyan to-neon-green text-black px-6 py-3 rounded-lg font-bold hover:shadow-lg transition-all duration-300 flex items-center gap-2"
+                            >
+                              <FaEye size={16} />
+                              📄 Sem 2 Result
+                            </motion.button>
+                          </div>
                           
                           <p className="text-xs text-gray-500 mt-3">
                             First Semester Result - JECRC University
@@ -292,7 +312,7 @@ const ResultModal = ({ isOpen, onClose, title, resultData }) => {
                     <p className="text-gray-400 text-sm">Semesters Completed</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-neon-cyan">9.1</p>
+                    <p className="text-2xl font-bold text-neon-cyan">9.2</p>
                     <p className="text-gray-400 text-sm">Current CGPA</p>
                   </div>
                   <div>
@@ -336,7 +356,7 @@ const ResultModal = ({ isOpen, onClose, title, resultData }) => {
             {/* Header with Close Button */}
             <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-4 flex justify-between items-center border-b border-gray-700">
               <h3 className="text-white font-bold text-lg">
-                📄 First Semester Result - Official Document
+                📄 {isImageViewOpen === 'sem1' ? 'First Semester Result' : 'Second Semester Result'} - Official Document
               </h3>
               <motion.button
                 onClick={() => setIsImageViewOpen(false)}
@@ -351,8 +371,8 @@ const ResultModal = ({ isOpen, onClose, title, resultData }) => {
             {/* Image Display */}
             <div className="p-6 flex justify-center items-center bg-gradient-to-br from-gray-900 to-gray-800">
               <motion.img
-                src="/photos/certificates/sem1_result.jpeg"
-                alt="First Semester Result - CGPA 9.1"
+                src={isImageViewOpen === 'sem1' ? "/photos/certificates/sem1_result.jpeg" : "/photos/result/second%20sem%20result%20.jpeg"}
+                alt={isImageViewOpen === 'sem1' ? "First Semester Result - CGPA 9.1" : "Second Semester Result"}
                 className="max-w-full max-h-[70vh] object-contain rounded-lg shadow-2xl border border-neon-cyan/30"
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -399,7 +419,7 @@ const ResultModal = ({ isOpen, onClose, title, resultData }) => {
                   <span className="text-gray-300 text-sm">JECRC University Official Document</span>
                 </div>
                 <div className="text-gray-400 text-sm">
-                  CGPA: <span className="text-neon-cyan font-bold">9.1</span>
+                  CGPA: <span className="text-neon-cyan font-bold">{isImageViewOpen === 'sem1' ? '9.1' : 'Available'}</span>
                 </div>
               </div>
             </div>

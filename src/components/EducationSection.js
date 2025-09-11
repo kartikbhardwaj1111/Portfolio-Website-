@@ -15,7 +15,7 @@ const EducationSection = () => {
       branch: 'B.Tech in Computer Science & Engineering (Software Product Engineering)',
       program: 'Kalvium Powered Curriculum',
       period: '2025 – 2028',
-      result: 'Completed First Year (1st Sem CGPA – 9.1)',
+      result: 'Completed First Year (Current CGPA – 9.2)',
       status: 'In Progress',
       hasResultViewer: true,
       highlights: [
@@ -227,7 +227,7 @@ const EducationSection = () => {
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
                 <div className="bg-gray-900/50 p-4 rounded-lg">
-                  <p className="text-3xl font-bold text-neon-cyan">9.1</p>
+                  <p className="text-3xl font-bold text-neon-cyan">9.2</p>
                   <p className="text-gray-400 text-sm">Current CGPA</p>
                 </div>
                 <div className="bg-gray-900/50 p-4 rounded-lg">

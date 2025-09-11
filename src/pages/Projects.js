@@ -1,19 +1,44 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 const Projects = () => {
 
-  // Upcoming projects placeholder message
-  const upcomingProjectsMessage = {
-    title: "Exciting Projects Coming Soon!",
-    description: "I'm currently working on some amazing projects that will showcase my latest skills and creativity. Stay tuned for updates!",
-    features: [
-      "🚀 Full-Stack Web Applications",
-      "💻 Modern UI/UX Designs", 
-      "⚡ Performance-Optimized Solutions",
-      "🔧 Latest Technologies Integration"
-    ]
-  };
+  const projects = [
+    {
+      id: 1,
+      title: "BookHive",
+      description: "A comprehensive book management platform where users can discover, organize, and manage their book collections. Features include book search, personal library management, and reading progress tracking.",
+      image: "/photos/Book_Hive.png",
+      technologies: ["React", "Node.js", "MongoDB", "Express"],
+      demoLink: "https://bookhiv.netlify.app/",
+      githubLink: "https://github.com/kalviumcommunity/S63_KartikBhardwaj_capstone_Bookhive",
+      backendLink: "https://s63-kartikbhardwaj-capstone-bookhive-1.onrender.com",
+      features: ["Book Discovery", "Personal Library", "Reading Progress", "User Authentication"]
+    },
+    {
+      id: 2,
+      title: "Focus Mate",
+      description: "A productivity application designed to help users stay focused and manage their tasks effectively. Features include task management, focus sessions, and productivity tracking to enhance work efficiency.",
+      image: "/photos/Focus_Mate.png",
+      technologies: ["React", "JavaScript", "CSS", "HTML"],
+      demoLink: "https://focusssmate.netlify.app/",
+      githubLink: "https://github.com/kartikbhardwaj1111/Focus_Mate",
+      features: ["Task Management", "Focus Sessions", "Productivity Tracking", "Time Management"]
+    },
+    {
+      id: 3,
+      title: "Laptop Stickers",
+      description: "A creative web application showcasing various laptop stickers and customization options. Features an interactive interface for browsing and selecting different sticker designs for personalizing laptops.",
+      image: "/photos/Laptop_stickers.png",
+      technologies: ["HTML", "CSS", "JavaScript", "Web Design"],
+      demoLink: "https://laptop-stickers.netlify.app/",
+      githubLink: "https://github.com/kalviumcommunity/s63_Laptop_Stickers.git",
+      features: ["Interactive Design", "Sticker Gallery", "Customization Options", "Responsive Layout"]
+    }
+  ];
+
+
 
   return (
     <motion.div
@@ -49,96 +74,95 @@ const Projects = () => {
         </div>
       </section>
 
-
-
-      {/* Upcoming Projects Section */}
+      {/* Projects Grid */}
       <section className="pb-20 relative z-10">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            {/* Main Card */}
-            <div className="bg-gray-900/40 backdrop-blur-sm rounded-3xl border border-gray-700 overflow-hidden hover:border-neon-cyan/50 transition-all duration-500 group">
-              {/* Header with animated gradient */}
-              <div className="bg-gradient-to-r from-neon-green/20 to-neon-cyan/20 p-8 border-b border-gray-700/50">
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  viewport={{ once: true }}
-                  className="text-6xl mb-4"
-                >
-                  🚧
-                </motion.div>
-                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-neon-green to-neon-cyan bg-clip-text text-transparent mb-4">
-                  {upcomingProjectsMessage.title}
-                </h2>
-                <p className="text-xl text-gray-300 leading-relaxed">
-                  {upcomingProjectsMessage.description}
-                </p>
-              </div>
-
-              {/* Features List */}
-              <div className="p-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  viewport={{ once: true }}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                >
-                  {upcomingProjectsMessage.features.map((feature, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.1 * index }}
-                      viewport={{ once: true }}
-                      className="flex items-center gap-4 p-4 bg-gray-800/50 rounded-xl border border-gray-600/50 hover:border-neon-cyan/30 transition-all duration-300"
-                    >
-                      <span className="text-2xl">{feature.split(' ')[0]}</span>
-                      <span className="text-gray-300 font-medium">
-                        {feature.substring(feature.indexOf(' ') + 1)}
-                      </span>
-                    </motion.div>
-                  ))}
-                </motion.div>
-
-                {/* Call to Action */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  viewport={{ once: true }}
-                  className="mt-8 pt-6 border-t border-gray-700/50"
-                >
-                  <p className="text-gray-400 mb-6">
-                    Stay connected to get notified when new projects are launched!
-                  </p>
-                  
-                  {/* Animated Progress Bar */}
-                  <div className="relative bg-gray-800 rounded-full h-2 mb-4 overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: '60%' }}
-                      transition={{ duration: 2, delay: 0.8 }}
-                      viewport={{ once: true }}
-                      className="h-full bg-gradient-to-r from-neon-green to-neon-cyan rounded-full"
-                    />
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-gray-900/40 backdrop-blur-sm rounded-2xl border border-gray-700 overflow-hidden hover:border-neon-cyan/50 transition-all duration-500 group"
+              >
+                {/* Project Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="w-full h-full bg-gray-800 flex items-center justify-center" style={{display: 'none'}}>
+                    <div className="text-center">
+                      <div className="text-4xl mb-2">📚</div>
+                      <div className="text-neon-cyan font-semibold">{project.title}</div>
+                    </div>
                   </div>
-                  <p className="text-sm text-gray-500">
-                    Projects in development... 60% complete
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                </div>
+
+                {/* Project Content */}
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-neon-cyan transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-300 mb-4 leading-relaxed">
+                    {project.description}
                   </p>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="px-3 py-1 bg-gray-800/50 text-neon-cyan text-sm rounded-full border border-gray-600"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex gap-3">
+                    <motion.a
+                      href={project.demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-neon-green to-neon-cyan text-black font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
+                    >
+                      <FaExternalLinkAlt size={14} />
+                      Demo
+                    </motion.a>
+                    <motion.a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-gray-600 text-gray-300 hover:border-neon-cyan hover:text-neon-cyan rounded-lg transition-all duration-300"
+                    >
+                      <FaGithub size={14} />
+                      Code
+                    </motion.a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
+
+
+
+
     </motion.div>
   );
 };

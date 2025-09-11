@@ -149,8 +149,10 @@ const Hero = () => {
         <motion.div variants={itemVariants} className="mb-16">
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <motion.div variants={buttonVariants} whileHover="hover">
-              <Link
-                to="/resume"
+              <a
+                href="/[Kartik Bhardwaj].pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative px-8 py-4 bg-gradient-to-r from-neon-green to-neon-cyan text-black font-semibold rounded-full transition-all duration-300 hover:shadow-2xl"
                 style={{
                   boxShadow: '0 0 20px #00ff88, 0 0 40px #00ff88, 0 0 60px #00ff88'
@@ -158,7 +160,7 @@ const Hero = () => {
               >
                 <span className="relative z-10">Explore Resume</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan to-neon-green rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </Link>
+              </a>
             </motion.div>
 
             <motion.div variants={buttonVariants} whileHover="hover">
