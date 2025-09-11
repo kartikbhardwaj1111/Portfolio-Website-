@@ -103,7 +103,7 @@ const Contact = () => {
     {
       name: 'LinkedIn',
       icon: FaLinkedin,
-      url: 'https://linkedin.com/in/kartik-bhardwaj-0b82a8316',
+      url: 'https://www.linkedin.com/in/kartik-bhardwaj-0b82a8316/',
       color: 'hover:bg-blue-600'
     }
   ];

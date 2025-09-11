@@ -1,31 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaHeart } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from 'react-icons/fa';
 
 const Footer = () => {
   const socialLinks = [
     {
       name: 'GitHub',
       icon: FaGithub,
-      url: 'https://github.com/yourusername',
+      url: 'https://github.com/kartikbhardwaj1111',
       color: 'hover:text-gray-900'
     },
     {
       name: 'LinkedIn',
       icon: FaLinkedin,
-      url: 'https://linkedin.com/in/yourusername',
+      url: 'https://www.linkedin.com/in/kartik-bhardwaj-0b82a8316/',
       color: 'hover:text-blue-600'
-    },
-    {
-      name: 'Twitter',
-      icon: FaTwitter,
-      url: 'https://twitter.com/yourusername',
-      color: 'hover:text-blue-400'
     },
     {
       name: 'Email',
       icon: FaEnvelope,
-      url: 'mailto:your.email@example.com',
+      url: 'mailto:kbrupc2020@gmail.com',
       color: 'hover:text-red-500'
     }
   ];
@@ -125,7 +119,7 @@ const Footer = () => {
             className="mt-8 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center"
           >
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Your Name. All rights reserved.
+              © {new Date().getFullYear()} Kartik Bhardwaj. All rights reserved.
             </p>
             <p className="text-gray-400 text-sm flex items-center mt-2 sm:mt-0">
               Made with <FaHeart className="text-red-500 mx-1" size={14} /> using React & Tailwind CSS

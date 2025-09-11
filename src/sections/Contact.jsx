@@ -89,7 +89,7 @@ const Contact = () => {
     {
       icon: FaLinkedin,
       label: 'LinkedIn',
-      href: 'https://linkedin.com/in/kartik-bhardwaj-0b82a8316',
+      href: 'https://www.linkedin.com/in/kartik-bhardwaj-0b82a8316/',
       color: '#0077B5'
     }
   ];

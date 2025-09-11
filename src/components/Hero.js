@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaDribbble, FaArrowDown, FaMouse } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaArrowDown, FaMouse } from 'react-icons/fa';
 import { ReactTyped } from 'react-typed';
 
 const Hero = () => {
@@ -58,9 +58,8 @@ const Hero = () => {
   }));
 
   const socialLinks = [
-    { icon: FaGithub, href: 'https://github.com', label: 'GitHub' },
-    { icon: FaLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: FaDribbble, href: 'https://dribbble.com', label: 'Dribbble' }
+    { icon: FaGithub, href: 'https://github.com/kartikbhardwaj1111', label: 'GitHub' },
+    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/kartik-bhardwaj-0b82a8316/', label: 'LinkedIn' }
   ];
 
   return (

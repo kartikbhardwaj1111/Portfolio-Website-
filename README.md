@@ -44,7 +44,7 @@ Build    : React Scripts, Vercel
 
 ```bash
 # Clone repo
-git clone https://github.com/yourusername/portfolio-website.git
+git clone https://github.com/kartikbhardwaj1111/portfolio-website.git
 cd portfolio-website
 
 # Install dependencies
